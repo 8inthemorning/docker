@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod #k8s 리소스 유형 지정
+metadata:
+  name: simple-echo
+spec: #리소스 정의
+  containers:
+  - name: nginx
+    image: gihyodocker/nginx:latest
+    env:
+    - name : BACKEND_HOST
+      value: localhost:8080
+    ports:
+      - containerPort: 80 #컨테이너가 노출시킬 포트 지정
+  - name: echo
+    image: gihyodocker/echo:latest
+    ports:
+    - containerPort: 8080
+  
